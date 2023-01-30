@@ -12,7 +12,7 @@
     <div>
       <a :href="GOOGLE_AUTH_URL">
         <img :src=googleLogo alt="Google" />
-        구글아이디로 로그인하기
+        구글아이디로 로그인
       </a>
     </div>
 
