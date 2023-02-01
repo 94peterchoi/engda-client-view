@@ -1,7 +1,7 @@
 <template>
     
     <div v-if="user.isLoggedIn">
-        환영합니다 로그인한 자여
+        환영합니다 {{user.userName}}
     </div>   
     <div v-else>
         비로그인 사용자
@@ -12,6 +12,7 @@
 <script>
 
     export default {
+        name: 'UserInfo',
         data() {
             return {
                 user: this.$store.getters.getUser,

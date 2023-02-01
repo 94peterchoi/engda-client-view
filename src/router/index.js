@@ -72,7 +72,10 @@ const checkToken = async () => {
     
     if (userInfo.id) {      
       store.commit('loginSuccess', userInfo);
-    }    
+    } else {
+      localStorage.removeItem('accessToken');
+      store.commit('logoutSuccess');
+    }
   }
 }
 

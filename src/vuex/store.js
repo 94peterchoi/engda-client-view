@@ -11,21 +11,27 @@ const store = new Vuex.Store({
     },
     mutations: {
         loginSuccess(state, payload) {
-
-            console.log('페이로드 => ', payload);
             const {id, name, role} = payload;
-            console.log('아디, 네임, 롤 => ', id, name, role);            
 
             state.user.isLoggedIn = true;
             state.user.id = id;
             state.user.userName = name;
             state.user.role = role;
         },
+        logoutSuccess(state) {
+            state.user.isLoggedIn = false;
+            state.user.id = '';
+            state.user.userName = '';
+            state.user.role = '';
+        }
     },
     actions: {
         loginSuccess(context) {
             context.commit("loginSuccess");            
         },
+        logoutSuccess(context) {
+            context.commit('logoutSuccess');
+        }
     },
     getters: {
         getUser: (state) => state.user,
