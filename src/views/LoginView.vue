@@ -8,7 +8,7 @@
 
 <template>
   <div class="login">
-    <h1>This is a login page</h1>
+    <h1>로그인을 해주세요.</h1>
     <div>
       <a :href="GOOGLE_AUTH_URL">
         <img :src=googleLogo alt="Google" />
