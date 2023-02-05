@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
 import LoginView from '@/views/LoginView.vue';
+import ProfileForm from '@/views/ProfileForm.vue';
 import OAuth2RedirectHandler from '@/views/OAuth2RedirectHandler.vue';
 import ToastUiEditor from '@/views/ToastUiTest.vue';
 import store from '@/vuex/store';
@@ -36,6 +37,14 @@ const router = createRouter({
         roles: ['USER']
       }
     },
+    {
+      path: '/user/profile/form',
+      name: 'ProfileForm',
+      component: ProfileForm,
+      meta: {
+        roles: ['USER']
+      }
+    }
   ]
 })
 

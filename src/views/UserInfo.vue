@@ -1,12 +1,10 @@
-<template>
-    
+<template>    
     <div v-if="user.isLoggedIn">
-        환영합니다 {{user.userName}}
+        <!-- <div>{{user.userName}}</div> -->
     </div>   
     <div v-else>
         비로그인 사용자
-    </div>
-    
+    </div>  
 </template>
 
 <script>
@@ -22,6 +20,7 @@
             console.log(this.$store.state.user.isLoggedIn);
         }
     }
+    
 </script>
 
 
