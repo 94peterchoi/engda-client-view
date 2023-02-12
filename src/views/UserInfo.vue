@@ -3,7 +3,7 @@
         <!-- <div>{{user.userName}}</div> -->
     </div>   
     <div v-else>
-        비로그인 사용자
+        <!-- 비로그인 사용자 -->
     </div>  
 </template>
 

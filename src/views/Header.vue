@@ -34,7 +34,13 @@
 
 <style scoped>
 .btn.logout {
-    background-color: yellow;
+    background-color: rgb(248, 248, 170);
+}
+
+nav {
+    background: rgb(251, 255, 241);
+    padding: 10px;
+    font-weight: bold;
 }
 
 </style>

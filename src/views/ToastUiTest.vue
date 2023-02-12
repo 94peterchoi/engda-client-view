@@ -1,6 +1,5 @@
 <template>
-    <div id="editor"></div>
-    
+    <div id="editor"></div>    
     <button @click="addDiary">my button</button>
 </template>
 
