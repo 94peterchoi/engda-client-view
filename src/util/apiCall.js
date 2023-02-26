@@ -3,7 +3,7 @@ import {ACCESS_TOKEN} from '@/constants/loginInfo';
 
 const basicHeaders = {
     'Content-Type': 'application/json',
-    // 'Authorization': 'Bearer ' + localStorage.getItem(ACCESS_TOKEN),
+    'Authorization': 'Bearer ' + localStorage.getItem(ACCESS_TOKEN),
 }
 
 const apiCall = async (spec, parameters, customHeader) => {
@@ -20,4 +20,8 @@ const apiCall = async (spec, parameters, customHeader) => {
     });
 }
 
-export default apiCall;
+// 이미지 업로드는 Contet-Type을 json 쓰면 안되고 멀티파트폼데이터 써야함요
+const fuckYou = 'fuck';
+
+export default {apiCall, fuckYou};
+export {apiCall, fuckYou};

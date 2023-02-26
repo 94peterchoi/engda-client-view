@@ -15,9 +15,9 @@
         data() {
             return {
                 categories: [
-                    {categoryId: 1, categoryName: '분류1'},
-                    {categoryId: 2, categoryName: '분류2'},
-                    {categoryId: 3, categoryName: '분류3'},
+                    {categoryId: 1, categoryName: 'all'},
+                    {categoryId: 2, categoryName: 'english'},
+                    {categoryId: 3, categoryName: 'coding'},
                     {categoryId: 3, categoryName: '분류3'},
                     {categoryId: 3, categoryName: '분류3'},
                     {categoryId: 3, categoryName: '분류3'},
