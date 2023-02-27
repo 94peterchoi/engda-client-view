@@ -14,7 +14,7 @@ const API_LIST = {
     UPLOAD_IMAGE: {
         method: 'POST',
         url: `${API_BASE_URL}/api/upload`,
-        desc: 'TOAST UI EDITOR 이미지 업로드'        
+        desc: 'TOAST UI EDITOR 이미지 업로드'
     }
 
     

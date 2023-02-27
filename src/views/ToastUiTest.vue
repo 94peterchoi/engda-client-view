@@ -23,7 +23,7 @@
 <script>
     import Editor from "@toast-ui/editor";
     import "@toast-ui/editor/dist/toastui-editor.css";
-    import {apiCall, fuckYou} from '@/util/apiCall.js';
+    import {apiCall, multiPartApiCall} from '@/util/apiCall.js';
     import API_LIST from '@/constants/apiInfo.js';
 
     export default {
@@ -46,7 +46,12 @@
                 hooks: {
                     addImageBlobHook: async (blob, callback) => {
                         const uploadResult = await uploadImage(blob);
-                        callback(uploadResult.imageAccessUrl, "이미지에 대한 설명");
+                        if (uploadResult.status === 200) {
+                            const data = uploadResult.data;
+                            callback(data.imageAccessUrl, "");
+                        } else {
+                            alert('원격서버 이미지 업로드에 실패하였습니다.');
+                        }
                     }
                 }
             });
@@ -55,11 +60,9 @@
                 const formData = new FormData();
                 formData.append('image', blob);
 
-                // let response = await fetch('http://localhost:8080/api/upload', options);
-                let response = await apiCall(API_LIST.UPLOAD_IMAGE, formData);
-                let result = response.json();
+                const response = await multiPartApiCall(API_LIST.UPLOAD_IMAGE, formData);
 
-                return result;
+                return response;
             }
 
         },
@@ -70,7 +73,6 @@
             },
             async addDiary() {                
                 this.content = this.editor.getHTML();                
-                console.log(fuckYou);
                 if (confirm('글을 등록하시겠습니까?')) {
                     
                     const params = {

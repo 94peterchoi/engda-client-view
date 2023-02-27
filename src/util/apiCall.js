@@ -1,13 +1,18 @@
 import axios from 'axios';
 import {ACCESS_TOKEN} from '@/constants/loginInfo';
 
-const basicHeaders = {
+const basicHeader = {
     'Content-Type': 'application/json',
-    'Authorization': 'Bearer ' + localStorage.getItem(ACCESS_TOKEN),
+}
+
+const multiPartHeaders = {
+    'Content-Type': 'multipart/form-data',
 }
 
 const apiCall = async (spec, parameters, customHeader) => {
-    const headers = {...basicHeaders, ...customHeader}    
+    basicHeader.Authorization = 'Bearer ' + localStorage.getItem(ACCESS_TOKEN); 
+
+    const headers = {...basicHeader, ...customHeader};
     return axios({
         method: spec.method,
         url: spec.url,
@@ -20,8 +25,22 @@ const apiCall = async (spec, parameters, customHeader) => {
     });
 }
 
-// 이미지 업로드는 Contet-Type을 json 쓰면 안되고 멀티파트폼데이터 써야함요
-const fuckYou = 'fuck';
+const multiPartApiCall = async (spec, parameters, customHeader) => {
+    multiPartHeaders.Authorization = 'Bearer ' + localStorage.getItem(ACCESS_TOKEN); 
+    console.log('멀파헤 => ', multiPartHeaders);
 
-export default {apiCall, fuckYou};
-export {apiCall, fuckYou};
+    const headers = {...multiPartHeaders, ...customHeader};
+    return axios({
+        method: spec.method,
+        url: spec.url,
+        data: parameters,
+        headers,
+    }).then((response) => {
+        return response;
+    }).catch((error) => {
+        return error;
+    });
+}
+
+export default {};
+export {apiCall, multiPartApiCall};
