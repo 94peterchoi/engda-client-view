@@ -23,7 +23,7 @@
 <script>
     import Editor from "@toast-ui/editor";
     import "@toast-ui/editor/dist/toastui-editor.css";
-    import {apiCall, multiPartApiCall} from '@/util/apiCall.js';
+    import {apiCall} from '@/util/apiCall.js';
     import API_LIST from '@/constants/apiInfo.js';
 
     export default {
@@ -58,10 +58,12 @@
 
             const uploadImage = async (blob) => {
                 const formData = new FormData();
-                formData.append('image', blob);
+                formData.append('image', blob);            
+                const headers = {
+                    'Content-Type': 'multipart/form-data',
+                }
 
-                const response = await multiPartApiCall(API_LIST.UPLOAD_IMAGE, formData);
-
+                const response = await apiCall(API_LIST.UPLOAD_IMAGE, formData, headers);
                 return response;
             }
 
