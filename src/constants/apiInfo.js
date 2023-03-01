@@ -8,7 +8,7 @@ const API_LIST = {
     },
     SAVE_POSTING: {
         method: 'POST',
-        url: `${API_BASE_URL}/posting/save`,
+        url: `${API_BASE_URL}/post/save`,
         desc: '글 등록'        
     },
     UPLOAD_IMAGE: {

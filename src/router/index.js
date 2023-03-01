@@ -3,10 +3,11 @@ import HomeView from '@/views/HomeView.vue'
 import LoginView from '@/views/LoginView.vue';
 import ProfileForm from '@/views/ProfileForm.vue';
 import OAuth2RedirectHandler from '@/views/OAuth2RedirectHandler.vue';
-import ToastUiEditor from '@/views/ToastUiTest.vue';
+import PostSave from '@/views/PostSave.vue';
 import store from '@/vuex/store';
 import {ACCESS_TOKEN} from '@/constants/loginInfo';
 
+const user = store.getters.getUser;
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -22,7 +23,14 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: LoginView
+      component: LoginView,
+      beforeEnter: (to, from, next) => {
+        if (!user.isLoggedIn) {
+          next();
+        } else {
+          next('/'); 
+        }
+      }
     },
     {
       path: '/oauth2/redirect',
@@ -31,8 +39,8 @@ const router = createRouter({
     },
     {
       path: '/editor',
-      name: 'ToastUiEditor',
-      component: ToastUiEditor,
+      name: 'PostSave',
+      component: PostSave,
       meta: {
         roles: ['USER']
       }
@@ -50,13 +58,12 @@ const router = createRouter({
 
 router.beforeEach(async (to, from, next) => {
   await checkToken();
-  const user = store.getters.getUser;
 
   if (to.meta.roles) {
     if (to.meta.roles.includes(user.role)) {      
       next();
     } else {
-      console.log('로그인이 필요합니다.');
+      console.log('로그인이 필요합니다. (정확히는 유저라는 권한이 필요한 거)');
       next('/login')
     }
   } else {
