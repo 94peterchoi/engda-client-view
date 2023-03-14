@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
 import LoginView from '@/views/LoginView.vue';
+import QnaView from '@/views/QnaView.vue';
 import ProfileForm from '@/views/ProfileForm.vue';
 import OAuth2RedirectHandler from '@/views/OAuth2RedirectHandler.vue';
 import PostSave from '@/views/PostSave.vue';
@@ -37,6 +38,11 @@ const router = createRouter({
       name: 'OAuth2RedirectHandler',
       component: OAuth2RedirectHandler,
     },
+    {
+      path: '/qna',
+      name: 'QnaView',
+      component: QnaView,
+    },   
     {
       path: '/editor',
       name: 'PostSave',

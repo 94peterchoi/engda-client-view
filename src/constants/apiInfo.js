@@ -6,6 +6,11 @@ const API_LIST = {
         url: `${API_BASE_URL}/user/me`,
         desc: '유저정보 조회'
     },
+    GET_QNA: {
+        method: 'GET',
+        url: `${API_BASE_URL}/qna`,
+        desc: 'qna 조회'
+    }, 
     SAVE_POSTING: {
         method: 'POST',
         url: `${API_BASE_URL}/post/save`,
